@@ -31,7 +31,7 @@ class SignUpScreen extends StatelessWidget {
           DialogUtils.hideLoading(context);
           DialogUtils.showMessage(
               context: context,
-              message: state.signUpRepositoryEntitiy?.data?.name ?? "");
+              message: state.signUpRepositoryEntitiy?.message ?? "");
         }
       },
       child: Scaffold(

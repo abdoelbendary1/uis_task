@@ -23,6 +23,6 @@ class ProductDetailsRepositoryImpl extends ProductDetailsRepository {
   @override
   Future<Either<Failures, GetProductResponseEntity>> getProductByID(
       String productID) {
-   return productDetailsRemoteDataSource.getProductByID(productID);
+    return productDetailsRemoteDataSource.getProductByID(productID);
   }
 }

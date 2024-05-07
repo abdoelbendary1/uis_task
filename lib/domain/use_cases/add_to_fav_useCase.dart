@@ -10,7 +10,8 @@ class AddToFavUseCase {
   AddToFavUseCase({
     required this.productDetailsRepository,
   });
-  Future<Either<Failures, AddToFavResponseEntity>> invoke(String productID) async {
+  Future<Either<Failures, AddToFavResponseEntity>> invoke(
+      String productID) async {
     return await productDetailsRepository.addToFavorite(productID);
   }
 }

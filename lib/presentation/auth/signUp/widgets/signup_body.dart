@@ -41,11 +41,8 @@ class SignUpBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          //logo
-          Padding(
-            padding: EdgeInsets.only(
-                top: 91.h, bottom: 20.h, left: 96.w, right: 96.w),
-            child: Image.asset(AppAssets.logo),
+          SizedBox(
+            height: 50.h,
           ),
           //form
           Padding(

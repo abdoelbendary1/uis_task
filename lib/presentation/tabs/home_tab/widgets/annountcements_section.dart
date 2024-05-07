@@ -8,7 +8,7 @@ import 'package:e_commerce_app/presentation/utils/my_assets.dart';
 import 'package:e_commerce_app/presentation/utils/theme/app_colors.dart';
 
 class AnnouncementsSection extends StatelessWidget {
-  List<BannerEntity> sliderImages;
+  List<BannerEntity?> sliderImages;
   AnnouncementsSection({
     Key? key,
     required this.sliderImages,
@@ -27,7 +27,7 @@ class AnnouncementsSection extends StatelessWidget {
           .map((banner) => Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Image.network(
-                  banner.image ?? "",
+                  banner?.image ?? "",
                   fit: BoxFit.fill,
                   width: 398.w,
                   height: 200.h,

@@ -1,9 +1,9 @@
 import 'package:e_commerce_app/domain/di.dart';
 import 'package:e_commerce_app/presentation/tabs/favorite_tab/cubit/fav_tab_view_model_cubit.dart';
 import 'package:e_commerce_app/presentation/tabs/home_tab/cubit/home_tab_view_model_cubit.dart';
+import 'package:e_commerce_app/presentation/tabs/home_tab/home_tab.dart';
 import 'package:e_commerce_app/presentation/tabs/home_tab/widgets/custom_search_with_shopping_cart.dart';
 import 'package:e_commerce_app/presentation/tabs/home_tab/widgets/search_item.dart';
-import 'package:e_commerce_app/presentation/tabs/product_list_tab/widgets/grid_view_card_item.dart';
 import 'package:e_commerce_app/presentation/utils/my_assets.dart';
 import 'package:e_commerce_app/presentation/utils/theme/app_colors.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +29,6 @@ class FavoriteTab extends StatelessWidget {
                   SizedBox(
                     height: 18.h,
                   ),
-                  /* CustomSearchWithShoppingCart(), */
                   state is FavTabSuccesState
                       ? Expanded(
                           flex: 8,
@@ -48,7 +47,10 @@ class FavoriteTab extends StatelessWidget {
                             },
                           ),
                         )
-                      : Center(child: CircularProgressIndicator()),
+                      : const Expanded(
+                          flex: 2,
+                          child: Center(child: buildLoadingUI()),
+                        ),
                   SizedBox(
                     height: 24.h,
                   ),
