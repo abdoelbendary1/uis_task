@@ -4,7 +4,11 @@ class BannerEntity {
   /* dynamic category;
   dynamic product; */
 
-  BannerEntity({this.id, this.image, /* this.category, this.product */});
+  BannerEntity({
+    this.id,
+    this.image,
+    /* this.category, this.product */
+  });
 
   factory BannerEntity.fromJson(Map<String, dynamic> json) => BannerEntity(
         id: json['id'] as int?,

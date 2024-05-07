@@ -20,6 +20,7 @@ class HomeSuccesState extends HomeTabViewState {
     required this.homeResponseEntity,
   });
 }
+
 class SearchLoadingState extends HomeTabViewState {}
 
 class SearchErrorState extends HomeTabViewState {

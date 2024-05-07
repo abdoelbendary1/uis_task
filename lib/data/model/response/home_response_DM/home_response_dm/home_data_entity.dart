@@ -1,4 +1,3 @@
-
 class HomeDataDm {
   bool? status;
   dynamic message;
@@ -7,11 +6,11 @@ class HomeDataDm {
   HomeDataDm({this.status, this.message, this.data});
 
   HomeDataDm.fromJson(Map<String, dynamic> json) {
-    if(json["status"] is bool) {
+    if (json["status"] is bool) {
       status = json["status"];
     }
     message = json["message"];
-    if(json["data"] is Map) {
+    if (json["data"] is Map) {
       data = json["data"] == null ? null : Data.fromJson(json["data"]);
     }
   }
@@ -20,7 +19,7 @@ class HomeDataDm {
     final Map<String, dynamic> _data = <String, dynamic>{};
     _data["status"] = status;
     _data["message"] = message;
-    if(data != null) {
+    if (data != null) {
       _data["data"] = data?.toJson();
     }
     return _data;
@@ -35,23 +34,29 @@ class Data {
   Data({this.banners, this.products, this.ad});
 
   Data.fromJson(Map<String, dynamic> json) {
-    if(json["banners"] is List) {
-      banners = json["banners"] == null ? null : (json["banners"] as List).map((e) => Banners.fromJson(e)).toList();
+    if (json["banners"] is List) {
+      banners = json["banners"] == null
+          ? null
+          : (json["banners"] as List).map((e) => Banners.fromJson(e)).toList();
     }
-    if(json["products"] is List) {
-      products = json["products"] == null ? null : (json["products"] as List).map((e) => Products.fromJson(e)).toList();
+    if (json["products"] is List) {
+      products = json["products"] == null
+          ? null
+          : (json["products"] as List)
+              .map((e) => Products.fromJson(e))
+              .toList();
     }
-    if(json["ad"] is String) {
+    if (json["ad"] is String) {
       ad = json["ad"];
     }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> _data = <String, dynamic>{};
-    if(banners != null) {
+    if (banners != null) {
       _data["banners"] = banners?.map((e) => e.toJson()).toList();
     }
-    if(products != null) {
+    if (products != null) {
       _data["products"] = products?.map((e) => e.toJson()).toList();
     }
     _data["ad"] = ad;
@@ -71,37 +76,48 @@ class Products {
   bool? inFavorites;
   bool? inCart;
 
-  Products({this.id, this.price, this.oldPrice, this.discount, this.image, this.name, this.description, this.images, this.inFavorites, this.inCart});
+  Products(
+      {this.id,
+      this.price,
+      this.oldPrice,
+      this.discount,
+      this.image,
+      this.name,
+      this.description,
+      this.images,
+      this.inFavorites,
+      this.inCart});
 
   Products.fromJson(Map<String, dynamic> json) {
-    if(json["id"] is int) {
+    if (json["id"] is int) {
       id = json["id"];
     }
-    if(json["price"] is int) {
+    if (json["price"] is int) {
       price = json["price"];
     }
-    if(json["old_price"] is int) {
+    if (json["old_price"] is int) {
       oldPrice = json["old_price"];
     }
-    if(json["discount"] is int) {
+    if (json["discount"] is int) {
       discount = json["discount"];
     }
-    if(json["image"] is String) {
+    if (json["image"] is String) {
       image = json["image"];
     }
-    if(json["name"] is String) {
+    if (json["name"] is String) {
       name = json["name"];
     }
-    if(json["description"] is String) {
+    if (json["description"] is String) {
       description = json["description"];
     }
-    if(json["images"] is List) {
-      images = json["images"] == null ? null : List<String>.from(json["images"]);
+    if (json["images"] is List) {
+      images =
+          json["images"] == null ? null : List<String>.from(json["images"]);
     }
-    if(json["in_favorites"] is bool) {
+    if (json["in_favorites"] is bool) {
       inFavorites = json["in_favorites"];
     }
-    if(json["in_cart"] is bool) {
+    if (json["in_cart"] is bool) {
       inCart = json["in_cart"];
     }
   }
@@ -115,7 +131,7 @@ class Products {
     _data["image"] = image;
     _data["name"] = name;
     _data["description"] = description;
-    if(images != null) {
+    if (images != null) {
       _data["images"] = images;
     }
     _data["in_favorites"] = inFavorites;
@@ -133,10 +149,10 @@ class Banners {
   Banners({this.id, this.image, this.category, this.product});
 
   Banners.fromJson(Map<String, dynamic> json) {
-    if(json["id"] is int) {
+    if (json["id"] is int) {
       id = json["id"];
     }
-    if(json["image"] is String) {
+    if (json["image"] is String) {
       image = json["image"];
     }
     category = json["category"];

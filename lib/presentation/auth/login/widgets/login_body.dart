@@ -31,21 +31,18 @@ class _LoginBodyState extends State<LoginBody> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          //logo
-          Padding(
-            padding: EdgeInsets.only(
-                top: 91.h, bottom: 46.h, left: 96.w, right: 96.w),
-            child: Image.asset(AppAssets.logo),
-          ),
           SizedBox(
-            height: 20.h,
+            height: 170.h,
           ),
           //text
           Padding(
             padding: EdgeInsets.only(left: 16.h, right: 124.h),
             child: Text(
-              "Welcom back to route",
-              style: Theme.of(context).textTheme.titleLarge,
+              "Welcom back ",
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge!
+                  .copyWith(fontSize: 40),
             ),
           ),
           Padding(
@@ -59,7 +56,7 @@ class _LoginBodyState extends State<LoginBody> {
             ),
           ),
           SizedBox(
-            height: 20.h,
+            height: 50.h,
           ),
           //form
           Padding(

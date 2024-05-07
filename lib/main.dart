@@ -2,13 +2,13 @@ import 'package:device_preview/device_preview.dart';
 import 'package:e_commerce_app/domain/di.dart';
 import 'package:e_commerce_app/presentation/auth/login/login_screen.dart';
 import 'package:e_commerce_app/presentation/auth/signUp/sign_up._screen.dart';
-import 'package:e_commerce_app/presentation/cart/cart_screen.dart';
 import 'package:e_commerce_app/presentation/home_screen/cubit/home_screen_view_model.dart';
 import 'package:e_commerce_app/presentation/home_screen/home_screen_view.dart';
 import 'package:e_commerce_app/presentation/product_details/cubit/product_details_view_model_cubit.dart';
 import 'package:e_commerce_app/presentation/product_details/product_details_view.dart';
 import 'package:e_commerce_app/presentation/splash/splash_screen.dart';
 import 'package:e_commerce_app/presentation/tabs/home_tab/cubit/home_tab_view_model_cubit.dart';
+import 'package:e_commerce_app/presentation/utils/google_maps/google_maps_view.dart';
 import 'package:e_commerce_app/presentation/utils/shared_prefrence.dart';
 import 'package:e_commerce_app/presentation/utils/theme/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -76,6 +76,8 @@ class MyApp extends StatelessWidget {
             SignUpScreen.routeName: (context) => SignUpScreen(),
             HomeScreenView.routeName: (context) => HomeScreenView(),
             ProductDetailsView.routeName: (context) => ProductDetailsView(),
+            GoogleMapsView.routeName: (context) => GoogleMapsView(),
+
             /* CartScreen.routeName: (context) => CartScreen(), */
           },
           theme: AppTheme.mainTheme,

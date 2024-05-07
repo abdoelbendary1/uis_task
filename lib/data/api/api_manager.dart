@@ -3,25 +3,22 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce_app/data/api/api_constants.dart';
 import 'package:e_commerce_app/data/model/request/login_request.dart';
+import 'package:e_commerce_app/data/model/request/routes_request_DM/routes_request_dm/destination.dart';
+import 'package:e_commerce_app/data/model/request/routes_request_DM/routes_request_dm/origin.dart';
+import 'package:e_commerce_app/data/model/request/routes_request_DM/routes_request_dm/route_modifiers.dart';
+import 'package:e_commerce_app/data/model/request/routes_request_DM/routes_request_dm/routes_request_dm.dart';
 import 'package:e_commerce_app/data/model/request/search_request.dart';
 import 'package:e_commerce_app/data/model/request/sign_up_request.dart';
-import 'package:e_commerce_app/data/model/response/add_to_cart_dm/AddToCartResponseDM.dart';
 import 'package:e_commerce_app/data/model/response/add_to_fav_dm/add_to_fav_response_dm.dart';
-import 'package:e_commerce_app/data/model/response/category_response_dm/category_or_brands_response_dm.dart';
-import 'package:e_commerce_app/data/model/response/get_cart_Data_response_DM/get_cart_data_response_dm.dart';
 
 import 'package:e_commerce_app/data/model/response/auth_respnose/Auth_response_DM.dart';
 import 'package:e_commerce_app/data/model/response/get_fav_list_response_dm/get_fav_list_response_dm.dart';
-import 'package:e_commerce_app/domain/entities/favorites_list_entity/get_fav_list_response_entity.dart';
+import 'package:e_commerce_app/data/model/response/routes_response_DM/routes_response_dm/routes_response_dm.dart';
 import 'package:e_commerce_app/data/model/response/get_product_by_id/get_product_response_dm.dart';
 import 'package:e_commerce_app/data/model/response/home_response_DM/home_response_dm/home_response_dm.dart';
-import 'package:e_commerce_app/data/model/response/home_response_DM/home_response_dm/product_DM.dart';
-import 'package:e_commerce_app/data/model/response/products_response_dm/product_response_dm.dart';
 import 'package:e_commerce_app/data/model/response/search_response_dm/search_response_dm.dart';
 
 import 'package:e_commerce_app/domain/entities/failures/failures.dart';
-import 'package:e_commerce_app/domain/entities/get_cart_data_response_entity.dart/get_cart_data_response_entity/get_cart_data_response_entity.dart';
-import 'package:e_commerce_app/domain/entities/auth_repository_entity/auth_repo_entity.dart';
 import 'package:e_commerce_app/domain/entities/search_response_entity/search_response_entity.dart';
 import 'package:e_commerce_app/presentation/utils/shared_prefrence.dart';
 import 'package:http/http.dart' as http;
@@ -54,10 +51,12 @@ class ApiManager {
           phone: phone,
         );
         Uri url = Uri.https(ApiConstants.baseUrl, ApiConstants.signUpEndPoint);
-
+ var lang = SharedPrefrence.getData(key: "lang");
         var response = await http.post(
           url,
-          body: signUpRequest.toJson(),
+          body: signUpRequest.toJson(),headers: {
+          "lang": lang.toString(),
+        }
         );
         var signUpResponse = AuthResponseDm.fromJson(jsonDecode(response.body));
         if (response.statusCode >= 200 && response.statusCode < 300) {
@@ -283,6 +282,43 @@ class ApiManager {
       }
     } catch (e) {
       return Left(Failures(errorMessege: e.toString()));
+    }
+  }
+
+  Future<RoutesResponseDm?> fetchRoutes({
+    required OriginDM origin,
+    required DestinationDM destination,
+    RouteModifiersDM? routesModifiers,
+  }) async {
+    try {
+      Uri url = Uri.parse(ApiConstants.routesBaseUrl);
+      Map<String, String> headers = {
+        'Content-Type': 'application/json',
+        'X-Goog-Api-Key': ApiConstants.apiKey,
+        'X-Goog-FieldMask':
+            'routes.duration,routes.distanceMeters,routes.polyline.encodedPolyline'
+      };
+
+      var requestBody = RoutesRequestDm(
+        origin: origin,
+        destination: destination,
+        routeModifiers: routesModifiers,
+      );
+
+      var response = await http.post(
+        url,
+        body: jsonEncode(requestBody),
+        headers: headers,
+      );
+      if (response.statusCode == 200) {
+        print("sent");
+        return RoutesResponseDm.fromJson(jsonDecode(response.body));
+      } else if (response.statusCode == 400) {
+        print("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH");
+      }
+    } on Exception catch (e) {
+      // TODO
+      print("error is ${e.toString()}");
     }
   }
 }

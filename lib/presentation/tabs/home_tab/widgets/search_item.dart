@@ -9,13 +9,14 @@ class SearchItem extends StatelessWidget {
   void Function()? onTap;
   SearchItem({
     Key? key,
-    required this.proudctEntity,required this.onTap,
+    required this.proudctEntity,
+    required this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap:onTap ,
+      onTap: onTap,
       child: ListTile(
         subtitleTextStyle: Theme.of(context).textTheme.bodyLarge,
         horizontalTitleGap: 15,

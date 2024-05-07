@@ -1,19 +1,14 @@
 class ApiConstants {
-  static String baseUrl = "student.valuxapps.com";
-  static String signUpEndPoint = "/api/register";
-  static String loginEndPoint = "api/login";
-  static String homeEndPoint = "api/home";
-  static String searchEndPoint = "/api/products/search";
-  static String addToFavoriteEndPoint = "/api/favorites";
-  static String productsEndPoint = "api/products";
-  static String favoriteListEndPoint = "api/favorites/";
+  static const String baseUrl = "student.valuxapps.com";
+  static const String signUpEndPoint = "/api/register";
+  static const String loginEndPoint = "api/login";
+  static const String homeEndPoint = "api/home";
+  static const String searchEndPoint = "/api/products/search";
+  static const String addToFavoriteEndPoint = "/api/favorites";
+  static const String productsEndPoint = "api/products";
+  static const String favoriteListEndPoint = "api/favorites/";
 
-
-
-
-  static String getCategoriesEndPoint = "/api/v1/categories";
-  static String getBrandsEndPoint = "/api/v1/brands";
-  static String getProductsEndPoint = "/api/v1/products";
-  static String addToCartEndPoint = "/api/v1/cart";
-
+  static const String routesBaseUrl =
+      'https://routes.googleapis.com/directions/v2:computeRoutes';
+  static const String apiKey = 'AIzaSyDhTG2ukklD4afVREH1jpVVHZR6vFxYJ8w';
 }

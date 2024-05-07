@@ -2,7 +2,6 @@ import 'package:e_commerce_app/domain/di.dart';
 import 'package:e_commerce_app/domain/entities/home_response_entity/product_entity.dart';
 import 'package:e_commerce_app/presentation/product_details/cubit/product_details_view_model_cubit.dart';
 import 'package:e_commerce_app/presentation/tabs/home_tab/cubit/home_tab_view_model_cubit.dart';
-import 'package:e_commerce_app/presentation/tabs/product_list_tab/cubit/product_tab_view_model_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -127,15 +126,15 @@ class GridViewCardItem extends StatelessWidget {
             padding: EdgeInsets.only(left: 8.0.w, right: 8.w),
             child: Row(
               children: [
-                /*  Text(
-                  "Review (${product.discount})",
+                Text(
+                  "Discount (${product.discount})",
                   maxLines: 1,
                   style: Theme.of(context).textTheme.titleSmall!.copyWith(
                         fontSize: 14.sp,
                         color: AppColors.darkPrimaryColor,
                         fontWeight: FontWeight.w500,
                       ),
-                ), */
+                ),
                 SizedBox(
                   width: 7.w,
                 ),
@@ -145,25 +144,9 @@ class GridViewCardItem extends StatelessWidget {
                 const Spacer(
                   flex: 1,
                 ),
-                /* InkWell(
-                  onTap: () {
-                    //todo: add to cart
-                    ProductTabViewModel.get(context)
-                        .addToCart(productID: product.id ?? "");
-                  },
-                  splashColor: Colors.transparent,
-                  child: Icon(
-                    Icons.add_circle,
-                    size: 32.sp,
-                    color: AppColors.primaryColor,
-                  ),
-                ) */
               ],
             ),
           )
-          // GridViewCardItemBody(
-          //   productEntity: productEntity,
-          // )
         ],
       ),
     );

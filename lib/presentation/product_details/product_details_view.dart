@@ -1,7 +1,8 @@
 import 'package:e_commerce_app/domain/di.dart';
 import 'package:e_commerce_app/domain/entities/home_response_entity/product_entity.dart';
 import 'package:e_commerce_app/presentation/product_details/cubit/product_details_view_model_cubit.dart';
-import 'package:e_commerce_app/presentation/utils/my_assets.dart';
+import 'package:e_commerce_app/presentation/utils/google_maps/google_maps_view.dart';
+
 import 'package:e_commerce_app/presentation/utils/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -57,7 +58,9 @@ class ProductDetailsView extends StatelessWidget {
           ),
           IconButton(
             padding: EdgeInsets.zero,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, GoogleMapsView.routeName);
+            },
             icon: const Icon(Icons.location_on_outlined),
           ),
         ],
